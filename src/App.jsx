@@ -1,4 +1,4 @@
- import { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import * as XLSX from "xlsx";
 import "./App.css";
@@ -58,15 +58,15 @@ function App() {
     axios
       .post("https://bulkmail-backend-7v5b.onrender.com/sendmail", {
         msg: msg,
-        emailList: emailList,
+        emaillist: emailList,
       })
       .then((data) => {
         if (data.data === true) {
           alert("✅ Emails sent successfully!");
-          setStatus(false);
         } else {
           alert("❌ Failed to send emails.");
         }
+        setStatus(false);  // <-- ALWAYS STOP LOADING
       })
       .catch((err) => {
         console.error("❌ Error:", err);
